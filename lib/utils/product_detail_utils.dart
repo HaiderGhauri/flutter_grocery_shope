@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_shope/models/cart_model.dart';
 import 'package:grocery_shope/utils/add_to_cart_utils.dart';
 import 'package:grocery_shope/widgets/product_detail_sheet.dart';
-import 'package:grocery_shope/constants/app_theme.dart';
-import 'package:provider/provider.dart';
 
 void showProductDetailBottomSheet(
   BuildContext context,

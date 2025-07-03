@@ -16,7 +16,7 @@ class CartScreenView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        // title: const Text('Cart'),
         centerTitle: true,
         backgroundColor: AppColors.primaryLightBlue,
         foregroundColor: AppColors.white1,
@@ -49,6 +49,7 @@ class CartScreenView extends StatelessWidget {
                               horizontal: 32,
                               vertical: 12,
                             ),
+                            elevation: 0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(26),
                             ),
@@ -184,7 +185,7 @@ class CartScreenView extends StatelessWidget {
           // Cart Summary
           Container(
             padding: const EdgeInsets.all(16.0),
-            margin: EdgeInsets.symmetric(horizontal: 8),
+            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             decoration: BoxDecoration(
               color: AppColors.gray3,
               borderRadius: BorderRadius.horizontal(

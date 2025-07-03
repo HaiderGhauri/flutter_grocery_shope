@@ -46,10 +46,10 @@ class CustomBottomNavBar extends StatelessWidget {
         ),
         CurvedNavigationBarItem(
           child: Icon(
-            Icons.favorite_rounded,
+            Icons.shopping_bag,
             color: selectedIndex == 2 ? AppColors.primaryLightYellow : AppColors.black2,
           ),
-          label: 'Favourite',
+          label: 'Cart',
           labelStyle: TextStyle(
             color: selectedIndex == 2 ? AppColors.gray3 : AppColors.black2,
           ),

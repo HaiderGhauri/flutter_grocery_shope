@@ -1,11 +1,9 @@
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_shope/constants/app_theme.dart';
-import 'package:grocery_shope/screens/man_view/widgets/custom_app_bar.dart';
-import 'package:grocery_shope/screens/man_view/widgets/custom_bottom_navbar.dart';
-import 'package:grocery_shope/screens/screens_content_widgets/categories_screen/categories_content_widget.dart';
-import 'package:grocery_shope/screens/screens_content_widgets/home_screen/home_content_widget.dart';
+import 'package:grocery_shope/screens/cart_screen/cart_screen_view.dart';
+import 'package:grocery_shope/screens/main_view/widgets/custom_app_bar.dart';
+import 'package:grocery_shope/screens/main_view/widgets/custom_bottom_navbar.dart';
+import 'package:grocery_shope/screens/main_view/screens_content_widgets/categories_screen/categories_content_widget.dart';
+import 'package:grocery_shope/screens/main_view/screens_content_widgets/home_screen/home_content_widget.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -34,9 +32,7 @@ class _MainViewState extends State<MainView> {
   static final List<Widget> _tabViews = <Widget>[
     const HomeContentWidget(),
     const CategoriesContentWidget(),
-    // Add your other tab content widgets here (e.g., FavouriteContentWidget, MoreContentWidget)
-    // For example:
-    const Center(child: Text('Favourite Content', style: TextStyle(fontSize: 24))),
+    const CartScreenView(),
     const Center(child: Text('More Content', style: TextStyle(fontSize: 24))),
   ];
 

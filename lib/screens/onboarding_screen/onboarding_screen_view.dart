@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:grocery_shope/constants/routes.dart';
-import 'package:grocery_shope/screens/splash_screen/widgets/spalsh_screnn_widget.dart';
+import 'package:grocery_shope/screens/onboarding_screen/widgets/onboarding_screnn_widget.dart';
 
 class SplashScreenView extends StatefulWidget {
   const SplashScreenView({super.key});
@@ -17,13 +17,13 @@ class _SplashScreenViewState extends State<SplashScreenView> {
       'title': 'Your holiday shopping delivered to Screen one',
       'description':
           "There's something for everyone to enjoy with Sweet Shop Favourites Screen 1",
-      'imagePath': 'assets/images/spalsh-icon.svg',
+      'imagePath': 'assets/images/onboarding-icon.svg',
     },
     {
       'title': 'Your holiday shopping delivered to Screen one',
       'description':
           "There's something for everyone to enjoy with Sweet Shop Favourites Screen 1",
-      'imagePath': 'assets/images/spalsh-icon.svg',
+      'imagePath': 'assets/images/onboarding-icon.svg',
     },
   ];
 
@@ -64,7 +64,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   }
 
   void _navigateToNextView() {
-    Navigator.of(context).pushReplacementNamed(AppRoutes.homeRoute); 
+    Navigator.of(context).pushReplacementNamed(AppRoutes.mainRoute); 
   }
 
   @override

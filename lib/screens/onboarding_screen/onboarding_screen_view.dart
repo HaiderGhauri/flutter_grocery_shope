@@ -34,7 +34,6 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   @override
   void initState() {
     super.initState();
-    // PageController par listener add karein taake page change hone par state update ho
     _pageController.addListener(() {
       if (_pageController.page != null) {
         setState(() {
@@ -48,16 +47,14 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   }
 
   void _startAutoSlide() {
-    _timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) { // Har 2 seconds baad slide karega
+    _timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) {
       if (_currentPageIndex < _onboardingData.length - 1) {
         _pageController.nextPage(
-          duration: const Duration(milliseconds: 500), // Slide ki duration
+          duration: const Duration(milliseconds: 500), // Slide duration
           curve: Curves.easeIn,
         );
       } else {
-        // Jab saare pages slide ho jayen, timer ko rok dein
         timer.cancel();
-        // Aur next view par redirect karein
         _navigateToNextView();
       }
     });
@@ -70,7 +67,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   @override
   void dispose() {
     _pageController.dispose();
-    _timer?.cancel(); // Dispose karte waqt timer ko cancel karna na bhulein
+    _timer?.cancel();
     super.dispose();
   }
 

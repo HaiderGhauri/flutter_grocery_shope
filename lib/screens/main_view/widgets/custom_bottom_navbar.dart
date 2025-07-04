@@ -46,24 +46,24 @@ class CustomBottomNavBar extends StatelessWidget {
         ),
         CurvedNavigationBarItem(
           child: Icon(
-            Icons.shopping_bag,
+            Icons.favorite_rounded,
             color: selectedIndex == 2 ? AppColors.primaryLightYellow : AppColors.black2,
           ),
-          label: 'Cart',
+          label: 'Favourite',
           labelStyle: TextStyle(
             color: selectedIndex == 2 ? AppColors.gray3 : AppColors.black2,
           ),
         ),
-        CurvedNavigationBarItem(
-          child: Icon(
-            Icons.more_vert_rounded,
-            color: selectedIndex == 3 ? AppColors.primaryLightYellow : AppColors.black2,
-          ),
-          label: 'More',
-          labelStyle: TextStyle(
-            color: selectedIndex == 3 ? AppColors.gray3 : AppColors.black2,
-          ),
-        ),
+        // CurvedNavigationBarItem(
+        //   child: Icon(
+        //     Icons.more_vert_rounded,
+        //     color: selectedIndex == 3 ? AppColors.primaryLightYellow : AppColors.black2,
+        //   ),
+        //   label: 'More',
+        //   labelStyle: TextStyle(
+        //     color: selectedIndex == 3 ? AppColors.gray3 : AppColors.black2,
+        //   ),
+        // ),
       ],
       onTap: onItemSelected, // Pass the callback directly
     );

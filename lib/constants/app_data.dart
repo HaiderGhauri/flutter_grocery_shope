@@ -8,6 +8,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fruits',
       'tags': ['Fresh', 'Organic'],
       'description': 'A package of fresh, organic oranges, perfect for juice or a healthy snack.',
+      'isFav': false,
     },
     {
       'id': 'P002', // Unique ID added
@@ -17,6 +18,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fruits',
       'tags': ['Local', 'Sweet'],
       'description': 'A box of locally sourced, sweet red apples, great for eating fresh.',
+      'isFav': false,
     },
     {
       'id': 'P003', // Unique ID added
@@ -26,6 +28,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fruits',
       'tags': ['Fresh', 'Seasonal'],
       'description': 'Crisp and refreshing green grapes, a perfect seasonal treat.',
+      'isFav': false, 
     },
     {
       'id': 'P004', // Unique ID added
@@ -35,6 +38,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Vegetables',
       'tags': ['Fresh', 'Organic'],
       'description': 'A convenient mix of fresh, organic vegetables for your daily cooking.',
+      'isFav': false, 
     },
     {
       'id': 'P005', // Unique ID added
@@ -44,6 +48,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fruits',
       'tags': ['Local', 'Ripe'],
       'description': 'A bunch of ripe and ready-to-eat bananas, locally grown.',
+      'isFav': false, 
     },
     {
       'id': 'P006', // Unique ID added
@@ -53,6 +58,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Vegetables',
       'tags': ['Organic', 'Crunchy'],
       'description': 'Sweet and crunchy organic carrots, ideal for snacks or cooking.',
+      'isFav': false, 
     },
     {
       'id': 'P007', // Unique ID added
@@ -62,6 +68,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fruits',
       'tags': ['Sour', 'Fresh'],
       'description': 'A bag of fresh, zesty lemons, perfect for culinary uses or beverages.',
+      'isFav': false, 
     },
     {
       'id': 'P008', // Unique ID added
@@ -71,6 +78,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fruits',
       'tags': ['Tropical', 'Sweet'],
       'description': 'A large, sweet tropical pineapple, bursting with flavor.',
+      'isFav': false, 
     },
     {
       'id': 'P009', // Unique ID added
@@ -80,6 +88,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Meat',
       'tags': ['Fresh', 'Boneless'],
       'description': 'High-quality fresh boneless chicken breast, ideal for healthy meals.',
+      'isFav': false, 
     },
     {
       'id': 'P010', // Unique ID added
@@ -89,6 +98,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Meat',
       'tags': ['Halal', 'Lean'],
       'description': 'Premium quality halal and lean beef mince, perfect for various dishes.',
+      'isFav': false, 
     },
     {
       'id': 'P011', // Unique ID added
@@ -98,6 +108,7 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fishes',
       'tags': ['Fresh', 'Farm-Raised'],
       'description': 'Fresh farm-raised Tilapia fillets, a light and healthy seafood option.',
+      'isFav': false, 
     },
     {
       'id': 'P012', // Unique ID added
@@ -107,5 +118,6 @@ final List<Map<String, dynamic>> productsData = [
       'category': 'Fishes',
       'tags': ['Wild-Caught', 'Omega-3'],
       'description': 'Delicious wild-caught Salmon steak, rich in Omega-3 fatty acids.',
+      'isFav': false, 
     },
 ];

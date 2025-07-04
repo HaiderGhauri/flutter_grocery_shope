@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_shope/constants/app_data.dart';
 import 'package:grocery_shope/constants/app_theme.dart';
+import 'package:grocery_shope/models/favourite_model.dart';
 import 'package:grocery_shope/screens/main_view/screens_content_widgets/home_screen/widgets/home_hero_widget.dart';
 import 'package:grocery_shope/screens/main_view/screens_content_widgets/home_screen/widgets/off_card_widget.dart';
 import 'package:grocery_shope/utils/add_to_cart_utils.dart';
 import 'package:grocery_shope/utils/product_detail_utils.dart';
 import 'package:grocery_shope/widgets/product_card_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeContentWidget extends StatelessWidget {
   const HomeContentWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<FavouriteModel>(context);
     // --- Filter the productsData here ---
     final List<Map<String, dynamic>> filteredProducts = productsData.where((
       product,
@@ -71,6 +74,13 @@ class HomeContentWidget extends StatelessWidget {
                       imagePath: product['imagePath'],
                       price: product['price'],
                       title: product['title'],
+                      isFav: product['isFav'] as bool,
+                      onToggleFavorite: (productId) {
+                            Provider.of<FavouriteModel>(
+                              context,
+                              listen: false,
+                            ).toggleFavourite(productId);
+                          },
                       onCardTap: () {
                         showProductDetailBottomSheet(context, product);
                       },

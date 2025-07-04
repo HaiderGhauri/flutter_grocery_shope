@@ -1,107 +1,22 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:grocery_shope/constants/app_theme.dart';
-
-// class ProductCard extends StatelessWidget {
-//   // Add properties for dynamic data
-//   final String imagePath;
-//   final String price;
-//   final String title;
-//   final VoidCallback onAddPressed;
-
-//   const ProductCard({
-//     super.key,
-//     required this.imagePath,
-//     required this.price,
-//     required this.title,
-//     required this.onAddPressed,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       padding: const EdgeInsets.all(18),
-//       decoration: BoxDecoration(
-//         color: AppColors.white1, // Dynamic background color
-//         borderRadius: BorderRadius.circular(14),
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Stack(
-//             children: [
-//               Padding(
-//                 padding: const EdgeInsets.only(bottom: 20),
-//                 child: Center(
-//                   child: SvgPicture.asset(
-//                     imagePath, // Dynamic image path
-//                     width: double.infinity,
-//                     height: 70,
-//                   ),
-//                 ),
-//               ),
-//               Positioned(
-//                 right: 0,
-//                 bottom: 0,
-//                 child: Container(
-//                   decoration: BoxDecoration(
-//                     color: AppColors.primaryLightBlue, // Dynamic icon button color
-//                     shape: BoxShape.circle,
-//                   ),
-//                   width: 28,
-//                   height: 28,
-//                   child: IconButton(
-//                     onPressed: onAddPressed, // Use the passed callback
-//                     icon: const Icon(Icons.add, size: 16),
-//                     color: AppColors.white1,
-//                     padding: EdgeInsets.zero,
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//           const SizedBox(height: 14),
-
-//           Text(
-//             '\$$price', // Dynamic price
-//             style: const TextStyle(
-//               color: AppColors.black2,
-//               fontSize: 16,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//           const SizedBox(height: 4),
-
-//           Text(
-//             title, // Dynamic title
-//             style: TextStyle(
-//               color: AppColors.black3,
-//               fontSize: 14,
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-// lib/widgets/product_card_widget.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Ensure this is imported if you use SvgPicture
-import 'package:grocery_shope/constants/app_theme.dart'; // For AppColors
+import 'package:grocery_shope/constants/app_theme.dart';
+import 'package:grocery_shope/models/favourite_model.dart';
+import 'package:provider/provider.dart'; // For AppColors
 
 class ProductCard extends StatelessWidget {
   final String id;
   final String imagePath;
   final String price;
   final String title;
+  final bool isFav;
   final String? category;
   final List<String>? tags;
   final Color? backgroundColor;
   final Color? iconButtonColor;
   final VoidCallback onAddPressed; // For the plus button
   final VoidCallback onCardTap; // For the entire card tap
+  final Function(String productId) onToggleFavorite;
 
   const ProductCard({
     super.key,
@@ -109,12 +24,14 @@ class ProductCard extends StatelessWidget {
     required this.imagePath,
     required this.price,
     required this.title,
+    required this.isFav,
     this.category,
     this.tags,
     this.backgroundColor = AppColors.white1,
     this.iconButtonColor = AppColors.primaryLightBlue,
     required this.onAddPressed,
     required this.onCardTap,
+    required this.onToggleFavorite,
   });
 
   @override
@@ -127,7 +44,7 @@ class ProductCard extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final double rightOffset = constraints.maxWidth * 0.05;
-          final double bottomOffset = constraints.maxHeight * 0.5;
+          final double bottomOffset = constraints.maxHeight * 0.4;
           return Stack(
             children: [
               InkWell(
@@ -189,7 +106,7 @@ class ProductCard extends StatelessWidget {
                           spacing: 4.0,
                           runSpacing: 2.0,
                           children: List.generate(tags!.length, (index) {
-                            return Row( 
+                            return Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
@@ -221,26 +138,70 @@ class ProductCard extends StatelessWidget {
               Positioned(
                 right: rightOffset,
                 bottom: bottomOffset,
-                child: SizedBox(
-                  // <--- Wrap Ink with SizedBox for precise size control
-                  width: 30, // Adjust this width
-                  height: 30, // Adjust this height
-                  child: Ink(
-                    decoration: BoxDecoration(
-                      color: iconButtonColor,
-                      borderRadius: BorderRadius.circular(15.0),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 30, // Adjust this width
+                      height: 30, // Adjust this height
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          color: iconButtonColor,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          icon: const Icon(
+                            Icons.add_rounded,
+                            color: Colors.white,
+                          ),
+                          onPressed: onAddPressed,
+                          iconSize: 18,
+                          splashRadius: 15,
+                        ),
+                      ),
                     ),
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      icon: const Icon(Icons.add_rounded, color: Colors.white),
-                      onPressed: onAddPressed,
-                      iconSize:
-                          18, // Can make this even smaller if needed (e.g., 16, 14)
-                      splashRadius:
-                          15, // Make splashRadius smaller to match new button size
+                    SizedBox(width: 10),
+                    SizedBox(
+                      width: 30, // Adjust this width
+                      height: 30, // Adjust this height
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          color: iconButtonColor,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          icon: Icon(
+                            isFav
+                                ? Icons.favorite_rounded
+                                : Icons.favorite_border_rounded,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            onToggleFavorite(id);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: AppColors.primaryDarkYellow,
+                                duration: const Duration(seconds: 1),
+                                content: Text(
+                                  isFav
+                                      ? '$title removed from favorites!'
+                                      : '$title added to favorites!',
+                                  style: const TextStyle(
+                                    color: AppColors.white1,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          iconSize: 18,
+                          splashRadius: 15,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grocery_shope/constants/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:grocery_shope/models/cart_model.dart';
 import 'package:grocery_shope/constants/app_theme.dart';
@@ -16,7 +17,7 @@ class CartScreenView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        // title: const Text('Cart'),
+        title: const Text('Sopping Cart'),
         centerTitle: true,
         backgroundColor: AppColors.primaryLightBlue,
         foregroundColor: AppColors.white1,
@@ -39,12 +40,13 @@ class CartScreenView extends StatelessWidget {
                         SizedBox(height: 24),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pop(
+                            Navigator.pushNamed(
                               context,
+                              AppRoutes.mainRoute,
                             ); // Go back to the previous screen (e.g., CategoryScreen)
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryDarkYellow ,
+                            backgroundColor: AppColors.primaryDarkYellow,
                             padding: EdgeInsets.symmetric(
                               horizontal: 32,
                               vertical: 12,

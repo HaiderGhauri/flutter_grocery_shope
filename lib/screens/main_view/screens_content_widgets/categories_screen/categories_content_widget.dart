@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_shope/constants/app_data.dart';
+import 'package:grocery_shope/models/favourite_model.dart';
 import 'package:grocery_shope/screens/main_view/screens_content_widgets/categories_screen/widgets/categories_hero_widget.dart';
 import 'package:grocery_shope/screens/main_view/screens_content_widgets/categories_screen/widgets/category_filter_bar.dart';
 import 'package:grocery_shope/utils/add_to_cart_utils.dart';
 import 'package:grocery_shope/utils/product_detail_utils.dart';
 import 'package:grocery_shope/widgets/product_card_widget.dart';
+import 'package:provider/provider.dart';
 
 class CategoriesContentWidget extends StatefulWidget {
   const CategoriesContentWidget({super.key});
@@ -39,6 +41,7 @@ class _CategoriesContentWidgetState extends State<CategoriesContentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<FavouriteModel>(context);
     return Builder(
       builder: (context) {
         final List<String> categories =
@@ -86,6 +89,13 @@ class _CategoriesContentWidgetState extends State<CategoriesContentWidget> {
                           title: productData['title'],
                           category: productData['category'],
                           tags: productData['tags'] as List<String>,
+                          isFav: productData['isFav'] as bool,
+                          onToggleFavorite: (productId) {
+                            Provider.of<FavouriteModel>(
+                              context,
+                              listen: false,
+                            ).toggleFavourite(productId);
+                          },
                           onAddPressed: () {
                             // Call the reusable function
                             addToCartAndShowSnackbar(

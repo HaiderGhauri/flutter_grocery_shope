@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // For ChangeNotifier
 
 class CartModel extends ChangeNotifier {
-  // Assuming CartItem stores product ID and quantity
   final Map<String, CartItem> _items = {}; // Product ID -> CartItem
 
   Map<String, CartItem> get items {
@@ -19,7 +18,7 @@ class CartModel extends ChangeNotifier {
   }
 
   int get totalItems {
-    return _items.values.fold(0, (sum, item) => sum + item.quantity);
+    return _items.length;
   }
 
   double get totalPrice {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_shope/screens/cart_screen/cart_screen_view.dart';
+import 'package:grocery_shope/screens/main_view/screens_content_widgets/favourite_screen/favourite_content_widget.dart';
 import 'package:grocery_shope/screens/main_view/widgets/custom_app_bar.dart';
 import 'package:grocery_shope/screens/main_view/widgets/custom_bottom_navbar.dart';
 import 'package:grocery_shope/screens/main_view/screens_content_widgets/categories_screen/categories_content_widget.dart';
@@ -32,8 +32,8 @@ class _MainViewState extends State<MainView> {
   static final List<Widget> _tabViews = <Widget>[
     const HomeContentWidget(),
     const CategoriesContentWidget(),
-    const CartScreenView(),
-    const Center(child: Text('More Content', style: TextStyle(fontSize: 24))),
+    const FavouriteContentWidget(),
+    // const Center(child: Text('More Content', style: TextStyle(fontSize: 24))),
   ];
 
   // This method will be passed to CustomBottomNavBar's onItemSelected

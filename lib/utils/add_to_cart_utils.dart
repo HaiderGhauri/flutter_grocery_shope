@@ -1,14 +1,9 @@
-// lib/utils/cart_utils.dart
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:grocery_shope/models/cart_model.dart';
 import 'package:grocery_shope/constants/app_theme.dart';
 
-/// Adds a product to the cart and displays a SnackBar notification.
-///
-/// This function can be called from anywhere in the app (e.g., product card,
-/// product detail sheet) to add an item to the global cart state.
+
 void addToCartAndShowSnackbar(
   BuildContext context, {
   required String id,

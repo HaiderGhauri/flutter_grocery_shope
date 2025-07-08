@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Ensure this is imported if you use SvgPicture
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_shope/constants/app_theme.dart';
-import 'package:grocery_shope/models/favourite_model.dart';
-import 'package:provider/provider.dart'; // For AppColors
 
 class ProductCard extends StatelessWidget {
   final String id;

@@ -33,14 +33,13 @@ class _MainViewState extends State<MainView> {
     const HomeContentWidget(),
     const CategoriesContentWidget(),
     const FavouriteContentWidget(),
-    // const Center(child: Text('More Content', style: TextStyle(fontSize: 24))),
   ];
 
-  // This method will be passed to CustomBottomNavBar's onItemSelected
+
   void _onNavBarTap(int index) {
     setState(() {
       _selectedIndex = index;
-      _pageController.jumpToPage(index); // Make PageView show the selected tab's content
+      _pageController.jumpToPage(index); 
     });
   }
 
@@ -52,10 +51,10 @@ class _MainViewState extends State<MainView> {
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {
-            _selectedIndex = index; // Keep the bottom bar and page in sync
+            _selectedIndex = index;
           });
         },
-        children: _tabViews, // Your list of main tab content widgets
+        children: _tabViews, 
       ),
       bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: _selectedIndex, // Pass the current selected index
